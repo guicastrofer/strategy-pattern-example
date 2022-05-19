@@ -12,11 +12,11 @@ import java.util.Date;
 public class Compra {
 
     @Id
-    int id;
-    int numeroGenero;
-    String nomeLivro;
-    String descricao;
-    Date dataCompra;
-    double preco;
+    private int id;
+    private int numeroGenero;
+    private String nomeLivro;
+    private String descricao;
+    private Date dataCompra;
+    private double valorFinal;
 
 }

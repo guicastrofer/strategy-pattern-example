@@ -16,10 +16,11 @@ public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
-    String nome;
-    String autor;
-    LocalDate dataPublicacao;
-    String genero;
+    private Integer id;
+    private String nome;
+    private String autor;
+    private LocalDate dataPublicacao;
+    private int numeroGenero;
+    private double preco;
 
 }

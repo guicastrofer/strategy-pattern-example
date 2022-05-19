@@ -17,6 +17,4 @@ public interface LivrariaRepository extends JpaRepository<Livro, Integer> {
     @Query(nativeQuery = true, value = "select * from Consumer where FUEL_CARD_NUMBER = ? ")
     Livro findByFuelCardNumber(int cardNumber);
 
-    @Query(nativeQuery = true, value = "select * from Consumer where DRUGSTORE_NUMBER = ? ")
-    Livro findByDrugstoreNumber(int cardNumber);
 }
