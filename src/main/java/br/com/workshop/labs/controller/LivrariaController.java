@@ -35,14 +35,18 @@ public class LivrariaController {
 
     /* Cadastrar novos livros */
     @RequestMapping(value = "/criarLivro", method = RequestMethod.POST)
+    @ResponseStatus(code = HttpStatus.CREATED)
     public void criarLivro(@RequestBody Livro livro) {
         repository.save(livro);
     }
 
     /* Atualizar dados do livro*/
-    @RequestMapping(value = "/atualizarLivro", method = RequestMethod.POST)
-    public void atualizarLivro(@RequestBody Livro livro) {
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.OK)
+    @RequestMapping(value = "/atualizarLivro", method = RequestMethod.PUT)
+    public Livro atualizarLivro(@RequestBody Livro livro) {
         repository.save(livro);
+        return livro;
     }
 
   /*
