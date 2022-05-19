@@ -52,7 +52,6 @@ public class LivrariaController {
         return livro;
     }
 
-
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
     @RequestMapping(value = "/comprar", method = RequestMethod.GET)
