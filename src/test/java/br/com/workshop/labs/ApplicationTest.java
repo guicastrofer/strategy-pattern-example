@@ -1,10 +1,10 @@
-package br.com.alelo.consumer.consumerpat;
+package br.com.workshop.labs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConsumerTestApplicationTests {
+class ApplicationTest {
 
 	@Test
 	void contextLoads() {
