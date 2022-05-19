@@ -35,6 +35,7 @@ public class ConsumerController {
 
     /* Cadastrar novos clientes */
     @RequestMapping(value = "/createConsumer", method = RequestMethod.POST)
+    @ResponseStatus(code = HttpStatus.OK)
     public void createConsumer(@RequestBody Consumer consumer) {
         repository.save(consumer);
     }
