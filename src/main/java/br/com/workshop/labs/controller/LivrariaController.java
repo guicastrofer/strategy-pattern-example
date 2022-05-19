@@ -21,7 +21,7 @@ public class LivrariaController {
     LivrariaRepository repository;
 
     @Autowired
-    CompraRepository extractRepository;
+    CompraRepository compraRepository;
 
 
     /* Deve listar todos os livros */
@@ -35,7 +35,7 @@ public class LivrariaController {
 
     /* Cadastrar novos livros */
     @RequestMapping(value = "/criarLivro", method = RequestMethod.POST)
-    public void createConsumer(@RequestBody Livro livro) {
+    public void criarLivro(@RequestBody Livro livro) {
         repository.save(livro);
     }
 
