@@ -24,7 +24,7 @@ public class Compra implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int numeroGenero;
+    private String tipoGenero;
     private String nomeLivro;
     private LocalDateTime dataCompra;
     private double valorFinal;

@@ -30,22 +30,14 @@ public class CompraService {
         this.livroRepository = livroRepository;
     }
 
-    public ResponseEntity<Compra> efetuarCompra(Integer codLivro) {
-        var livroOpt = livroRepository.findById(codLivro);
-
-        if (!livroOpt.isPresent())
-            return ResponseEntity.notFound().build();
-
-        var livro = livroOpt.get();
-
-
-        if (livro.getNumeroGenero() == 1) {
+    public ResponseEntity<Compra> efetuarCompra(Livro livro) {
+        if (livro.getTipoGenero().equals("ROMANCE")) {
             var cashback = (livro.getPreco() / 100) * 10;
             var valorFinal = livro.getPreco() - cashback;
             var compra = compraRepository.save(montarObjeto(livro, valorFinal));
             return ResponseEntity.ok(compra);
 
-        } else if (livro.getNumeroGenero() == 2) {
+        } else if (livro.getTipoGenero().equals("TERROR")) {
             var cashback = (livro.getPreco() / 100) * 20;
             var valorFinal = livro.getPreco() - cashback;
             var compra = compraRepository.save(montarObjeto(livro, valorFinal));
@@ -62,7 +54,7 @@ public class CompraService {
     public Compra montarObjeto(Livro livro, double valorFinal) {
         return Compra.builder()
                 .dataCompra(LocalDateTime.now())
-                .numeroGenero(livro.getNumeroGenero())
+                .tipoGenero(livro.getTipoGenero())
                 .nomeLivro(livro.getNome())
                 .valorFinal(valorFinal)
                 .build();

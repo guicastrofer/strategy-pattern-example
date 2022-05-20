@@ -52,8 +52,8 @@ public class LivrariaController {
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
     @RequestMapping(value = "/comprar", method = RequestMethod.POST)
-    public ResponseEntity<Compra> comprar(@RequestBody CompraDTO compraDTO) {
-        return compraService.efetuarCompra(compraDTO.getCodigo());
+    public ResponseEntity<Compra> comprar(@RequestBody Livro livro) {
+        return compraService.efetuarCompra(livro);
     }
 
     /* Listar todas as Compras */

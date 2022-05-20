@@ -22,7 +22,7 @@ public class Livro implements Serializable {
     private String nome;
     private String autor;
     private LocalDate dataPublicacao;
-    private int numeroGenero;
+    private String tipoGenero;
     private double preco;
 
 }
