@@ -1,8 +1,8 @@
 package br.com.workshop.labs.controller;
 
-import br.com.workshop.labs.dto.CompraDTO;
 import br.com.workshop.labs.entity.Compra;
 import br.com.workshop.labs.entity.Livro;
+import br.com.workshop.labs.interfaces.GeneroStrategy;
 import br.com.workshop.labs.service.CompraService;
 import br.com.workshop.labs.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +12,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping("/livros")
 public class LivrariaController {
 
+
+    private final Map<String, GeneroStrategy> generoStrategy;
     private final LivroService livroService;
 
     private final CompraService compraService;
 
     @Autowired
-    public LivrariaController(LivroService livroService, CompraService compraService) {
+    public LivrariaController(LivroService livroService, CompraService compraService,
+                              Map<String, GeneroStrategy> generoStrategy) {
         this.livroService = livroService;
         this.compraService = compraService;
+        this.generoStrategy = generoStrategy;
     }
 
     /* Listar todos os livros */
@@ -52,8 +57,8 @@ public class LivrariaController {
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
     @RequestMapping(value = "/comprar", method = RequestMethod.POST)
-    public ResponseEntity<Compra> comprar(@RequestBody CompraDTO compraDTO) {
-        return compraService.efetuarCompra(compraDTO.getCodigo());
+    public ResponseEntity<Compra> comprar(@RequestBody Livro livro) {
+        return this.generoStrategy.get(livro.getTipoGenero().name()).obterDesconto(livro);
     }
 
     /* Listar todas as Compras */
