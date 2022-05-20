@@ -1,13 +1,13 @@
-package br.com.alelo.consumer.consumerpat;
+package br.com.workshop.labs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConsumerTestApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerTestApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
